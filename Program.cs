@@ -3,12 +3,17 @@ using System.Text.RegularExpressions; // Used for string formatting
 
 /*
  
-    tasks from the book THE PLAYERS GUIDE (5th Edition)
-    All tasks is written by me, Dennis Hankvist, a.k.a. Pentapatch
+    Tasks from the book THE PLAYERS GUIDE (5th Edition)
+    All tasks is written by me, Dennis Hankvist, a.k.a. Pentapatch.
 
     All tasks is separated into their own files.
-    The code on Program.cs is using reflection to dynamically list all of the tasks that I've created
-    using a simple menu system. Use the arrow keys to navigate, and enter to run the task.
+    The code on 'Program.cs' is using reflection to dynamically list all of the tasks
+    that I've created and display them in a simple menu system.
+
+    Not all tasks is error checked, I've often intentionally omitted this, to keep down
+    the complexity of the code.
+
+    Use the arrow up/down keys to navigate, and enter to run the task.
  
  */
 
@@ -71,11 +76,12 @@ while (true)
                 RunTask(typesList[index]);
                 break;
             default:
-                exitReadKeyLoop = true;
+                exitReadKeyLoop = true; // Note: We do not want to exit the loop here (value gets inverted below)
                 break;
         }
 
-        exitReadKeyLoop = !exitReadKeyLoop;
+        exitReadKeyLoop = !exitReadKeyLoop; // <-- I'm inverting the state here.
+                                            //     This free's me from having to write exitReadKeyLoop = true; at every case that is indeed handled
     }
 
 }
@@ -132,6 +138,7 @@ static void RunTask(Type type)
         {
             // Clear and restore the console
             ClearConsole();
+            Console.CursorVisible = true; // Enable the cursor
 
             // Invoke the Run method
             method.Invoke(null, null);
