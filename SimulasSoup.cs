@@ -29,7 +29,7 @@
             var dish = GetDish(); // Get the user selected dish
 
             // Print the result to the user
-            Console.Clear();
+            ResetConsole();
             Console.WriteLine($"Mmmm... Time for {dish.Seasoning} {dish.MainIngredient} {dish.Type}!");
             
             // Wait for user aknowledgement, then exit the method
@@ -56,11 +56,7 @@
             // Stay inside a loop indefinitely, or until the user presses return
             while (true)
             {
-                // Set up the console
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.CursorVisible = false;
-                Console.Clear();
+                ResetConsole();
 
                 // Print the message
                 Console.WriteLine(message + "\nUse the up/down arrow keys to navigate the menu.\n");
@@ -97,5 +93,15 @@
                 if (index == menuItemName.Length) index = 0;
             }
         }
+
+        private static void ResetConsole()
+        {
+            // Set up the console
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.CursorVisible = false;
+            Console.Clear();
+        }
+
     }
 }
