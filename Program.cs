@@ -1,7 +1,18 @@
 ﻿using System.Reflection;   // Used for retrieving all classes contained within this assembly
 using System.Text.RegularExpressions; // Used for string formatting
 
-bool wrapArround = true;
+/*
+ 
+    tasks from the book THE PLAYERS GUIDE (5th Edition)
+    All tasks is written by me, Dennis Hankvist, a.k.a. Pentapatch
+
+    All tasks is separated into their own files.
+    The code on Program.cs is using reflection to dynamically list all of the tasks that I've created
+    using a simple menu system. Use the arrow keys to navigate, and enter to run the task.
+ 
+ */
+
+bool wrapArround = true; // Determines whether to wrap arround to the beginning of the menu when the end is reached
 
 // Get a list of all classes that are contained within this namespace
 List<Type> typesList = GetClassList();
